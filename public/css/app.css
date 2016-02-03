@@ -1,0 +1,52 @@
+/*VARIABLES*/
+.bottom-0 {
+  margin-bottom: 0; }
+
+/******HEADER********/
+.header {
+  height: 60px;
+  background-color: #616161;
+  margin-bottom: 0; }
+
+/*-------------------*/
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /******SIDE_NAV******/
+  /*-----------------*/ }
+  .wrapper .nav {
+    height: 100%;
+    background-color: #0277bd; }
+    .wrapper .nav .menu {
+      border: 0px;
+      box-shadow: none; }
+      .wrapper .nav .menu .collapsible-header {
+        background-color: #0277bd;
+        border: 0px; }
+      .wrapper .nav .menu a {
+        color: #fafafa; }
+      .wrapper .nav .menu li {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border: 0px; }
+      .wrapper .nav .menu ul {
+        border: 0px; }
+  .wrapper .content {
+    height: 100%;
+    background-color: #fafafa;
+    padding-top: 15px; }
+    .wrapper .content .action-btn {
+      background-color: #fafafa;
+      color: #616161; }
+    .wrapper .content .fixed-action-btn {
+      margin: 0;
+      position: relative;
+      right: 0;
+      bottom: 0;
+      width: 0; }
+      .wrapper .content .fixed-action-btn ul {
+        right: 0;
+        top: 15%; }
+
+/*# sourceMappingURL=app.css.map */
