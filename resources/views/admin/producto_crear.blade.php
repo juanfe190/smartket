@@ -41,7 +41,7 @@
 	    </div>
 
 		<label>Categor&iacutea:</label>
-		<select class="browser-default" name="categoria_id">
+		<select id = "selCategoria" class="browser-default" name="categoria_id">
 		    <option value="" disabled selected>Escoger categor&iacutea</option>
 		    @foreach($categorias as $categoria)
 		    	<option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -49,7 +49,7 @@
 	    </select>
 
 	    <label>Subcategor&iacutea:</label>
-		<select class="browser-default" name="categoria_id">
+		<select id="selSubcategoria" class="browser-default" name="categoria_id">
 		    <option value="" disabled selected>Escoger subcategor&iacutea</option>
 	    </select>
 

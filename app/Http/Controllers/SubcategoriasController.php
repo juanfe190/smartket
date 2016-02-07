@@ -69,4 +69,12 @@ class SubcategoriasController extends Controller
 
     	//QUE HACER DESPUES DE LA ACCION?
     }
+
+    //JSON GET SUBCATEGORIA
+    public function getCategorias($idCategoria){
+        if($categoria = Categoria::find($idCategoria)){
+            $subcategorias = $categoria->subcategoria()->get();
+            return response()->json($subcategorias);
+        }else return response()->json(['error'=>'Categoria no existente']);
+    }
 }

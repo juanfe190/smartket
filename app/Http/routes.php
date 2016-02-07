@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('categoria.mostrar', ['toast'=>'foo']);
-});
+Route::get('/{idCategoria}', 'SubcategoriasController@getCategorias');
 
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('/',['as'=>'admin.main', 'uses'=>'MainController@main']);
@@ -32,10 +30,11 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::post('/subcategoria/editar/{id}',['as'=>'subcategoria.actualizar', 'uses'=>'SubcategoriasController@update']);
 	Route::get('/subcategoria/eliminar/{id}',['as'=>'subcategoria.eliminar', 'uses'=>'SubcategoriasController@delete']);
 
-	Route::get('/subcategoria/',['as'=>'subcategoria.mostrar', 'uses'=>'SubcategoriasController@mostrar']);
 	Route::get('/producto/crear',['as'=>'producto.crear', 'uses'=>'ProductosController@create']);
 });
 
-Route::post('/1', 'ProductosController@store');
+Route::group(['prefix'=>'api', 'middleware'=>'CheckApi'],function(){
+	Route::get('/subcategoria/{id}',['as'=>'api.subcategoria', 'uses'=>'SubcategoriasController@getCategorias']);
+});
 
 
