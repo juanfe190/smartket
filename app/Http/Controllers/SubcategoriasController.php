@@ -35,16 +35,27 @@ class SubcategoriasController extends Controller
     	return redirect()->route('subcategoria.crear',['toast'=>'Subcategor&iacutea creada con &eacutexito']);
     }
 
-    public function update($id, Request $request){
-    	if($subcategoria = Subcategoria::find($id)){
-    		$subcategoria->nombre=$request->nombre;
-    		$categoria->save();
-    	}else{
-    		//SI NO EXISTE ?
-    	}
-    	
+    public function edit($id){
+        $subcategoria = Subcategoria::find($id);
+        $categorias = Categoria::all();
 
-    	//QUE HACER DESPUES DE LA ACCION?
+        return view('admin.subcategoria_actualizar',['id'=>$subcategoria->id, 'nombre'=>$subcategoria->nombre, 'categorias'=>$categorias]);
+    }
+
+    public function update($id, Request $request){
+        
+    	if($subcategoria = Subcategoria::find($id)){
+            $subcategoria->nombre=$request->nombre;
+                if($categoria = Categoria::find($request->categoria_id)){
+                    $categoria->subcategoria()->save($subcategoria);
+                }else{
+                    return redirect()->route('subcategoria.editar',['id'=>$id, 'toast'=>'Por favor verifique los datos']);
+                }
+    		$subcategoria->save();
+    	}else{
+    		return redirect()->route('subcategoria.editar',['id'=>$id, 'toast'=>'Por favor verifique los datos']);
+    	}
+        	return redirect()->route('subcategoria.mostrar',['toast'=>'Subcategor&iacutea creada con &eacutexito']);
     }
 
     public function delete($id){

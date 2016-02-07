@@ -23,8 +23,8 @@
                           <i class="small material-icons action-btn">add</i>
                         </a>
                         <ul>
-                          <li><a href="{{route('categoria.editar', ['id'=>$categoria->id])}}" class="btn-floating green"><i class="material-icons">edit_mode</i></a></li>
-                          <li><a href="{{route('categoria.eliminar', ['id'=>$categoria->id])}}" class="btn-floating red darken-1"><i class="material-icons">delete</i></a></li>
+                          <li><a href="{{route('subcategoria.editar', ['id'=>$element->id])}}" class="btn-floating green"><i class="material-icons">edit_mode</i></a></li>
+                          <li><a href="{{route('subcategoria.eliminar', ['id'=>$element->id])}}" class="btn-floating red darken-1"><i class="material-icons">delete</i></a></li>
                         </ul>
                     </div>
             </td>

@@ -12,10 +12,14 @@ use Storage;
 
 class ProductosController extends Controller
 {
+    public function create(){
+        $categorias = Categoria::all();
+        return view('admin.producto_crear')->with('categorias', $categorias);
+    }
+
     public function store(Request $request){
     	$categoriaID = $request->categoria_id;
     	$subcategoriaID = $request->subcategoria_id;
-    	
     	$categoria = Categoria::find($categoriaID);
     	
     	if($categoria && $subcategoria = $categoria->subcategoria()->find($subcategoriaID)){

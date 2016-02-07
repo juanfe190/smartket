@@ -26,8 +26,8 @@
                  <li>
                     <a class="collapsible-header" href="#"><i class="material-icons">tab</i>Subcategor&iacuteas</a>
                     <ul class="collapsible-body center">
-                        <li><a href="#"><i class="material-icons">add</i>Crear</a></li>
-                        <li><a href="#"><i class="material-icons">search</i>Mostrar</a></li>
+                        <li><a href="{{route('subcategoria.crear')}}"><i class="material-icons">add</i>Crear</a></li>
+                        <li><a href="{{route('subcategoria.mostrar')}}"><i class="material-icons">search</i>Mostrar</a></li>
                     </ul>
                 </li>
                  <li>

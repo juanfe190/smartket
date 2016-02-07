@@ -28,6 +28,12 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get('/subcategoria/',['as'=>'subcategoria.mostrar', 'uses'=>'SubcategoriasController@mostrar']);
 	Route::get('/subcategoria/crear',['as'=>'subcategoria.crear', 'uses'=>'SubcategoriasController@create']);
 	Route::post('/subcategoria/crear',['as'=>'subcategoria.store', 'uses'=>'SubcategoriasController@store']);
+	Route::get('/subcategoria/editar/{id}',['as'=>'subcategoria.editar', 'uses'=>'SubcategoriasController@edit']);
+	Route::post('/subcategoria/editar/{id}',['as'=>'subcategoria.actualizar', 'uses'=>'SubcategoriasController@update']);
+	Route::get('/subcategoria/eliminar/{id}',['as'=>'subcategoria.eliminar', 'uses'=>'SubcategoriasController@delete']);
+
+	Route::get('/subcategoria/',['as'=>'subcategoria.mostrar', 'uses'=>'SubcategoriasController@mostrar']);
+	Route::get('/producto/crear',['as'=>'producto.crear', 'uses'=>'ProductosController@create']);
 });
 
 Route::post('/1', 'ProductosController@store');
