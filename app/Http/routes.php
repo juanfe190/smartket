@@ -33,7 +33,7 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get('/producto/crear',['as'=>'producto.crear', 'uses'=>'Admin\ProductosController@create']);
 });
 
-Route::group(['prefix'=>'api'],function(){
+Route::group(['prefix'=>'api', 'middleware'=>'CheckApi'],function(){
 	Route::get('/getproductos',['as'=>'api.getProductos', 'uses'=>'Api\ApiProductosController@getProductos']);
 });
 
