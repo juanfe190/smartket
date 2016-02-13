@@ -10,7 +10,9 @@
       <link href="{{asset('css/app.css')}}" rel="stylesheet">
     </head>
 
-    <body toast="<?php if(isset($_GET['toast'])) echo $_GET['toast'] ?>">
+    <body toast="<?php if(isset($_GET['toast'])) echo $_GET['toast']; 
+                        else if($errors->any()) echo $errors->first('toast');
+                  ?>">
       @yield('body')
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="{{asset('js/materialize.min.js')}}"></script>

@@ -12,17 +12,32 @@ use Storage;
 
 class ProductosController extends Controller
 {
+    /**
+    * Esta funcion muestra la visa producto_crear junto con
+    * la lista de categorias obtenidas de la base de datos
+    *
+    * @param Illuminate\Http\Request
+    * @return view with $categorias
+    *
+    */
+
     public function create(){
         $categorias = Categoria::all();
         return view('admin.producto_crear')->with('categorias', $categorias);
     }
 
+
+
+
+
+    /**
+    * Esta funcion se encarga de guardar los productos y
+    * y sus respectivas imagenes en caso de estar presentes
+    * 
+    * @param Illuminate\Http\Request
+    *
+    */
     public function store(Request $request){
-    	$categoriaID = $request->categoria_id;
-    	$subcategoriaID = $request->subcategoria_id;
-    	$categoria = Categoria::find($categoriaID);
-    	
-    	if($categoria && $subcategoria = $categoria->subcategoria()->find($subcategoriaID)){
     		$producto = Productos::create($request->all());
              $id = $producto->id;
 
@@ -41,31 +56,42 @@ class ProductosController extends Controller
                 $producto->tabla_nutricional = $filename;
                 Storage::put('/tablas/'.$filename, file_get_contents($tabla_nutricional->getRealPath()));
             } 
-            $producto->save();
-            /*---------------------*/
-            
-    	}else{
-    		echo 'categoria o subcategoria no encontrada';
-    		//CATEGORIA NO ENCONTRADA?
-    	}
+            $producto->save();            
 
     	//QUE HACER DESPUES DE ACCION?
     }
 
-    public function update(Request $request, $id){
-        $categoriaID = $request->categoria_id;
-        $subcategoriaID = $request->subcategoria_id;
-        
-        $categoria = Categoria::find($categoriaID);
-        $subcategoria = $categoria->subcategoria()->find($subcategoriaID);
 
-        if($categoria && $subcategoria){
-            $producto = Productos::find($request->$id);
-            $producto->update($request->all());
-        }
+
+
+
+
+   /**
+    * Esta funcion se encarga de actualizar un producto
+    * en la base de datos
+    *
+    * @param Illuminate\Http\Request
+    * @param id del producto
+    *
+    */
+
+    public function update(Request $request, $id){
+        $producto = Productos::find($request->$id);
+        $producto->update($request->all());
     }
 
-     public function delete($id){
+
+
+    
+
+    /**
+    * Esta funcion se encarga de eliminar un 
+    * producto de la base de datos
+    *
+    * @param id del producto
+    *
+    */
+    public function delete($id){
         if($producto = Productos::find($id))
             $producto->delete();
         else{
