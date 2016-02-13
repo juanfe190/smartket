@@ -20,7 +20,6 @@ class ProductosController extends Controller
     * @return view with $categorias
     *
     */
-
     public function create(){
         $categorias = Categoria::all();
         return view('admin.producto_crear')->with('categorias', $categorias);
@@ -38,25 +37,25 @@ class ProductosController extends Controller
     *
     */
     public function store(Request $request){
-    		$producto = Productos::create($request->all());
-             $id = $producto->id;
+		$producto = Productos::create($request->all());
+         $id = $producto->id;
 
-             /*  MANEJO DE ARCHIVOS  */
-            if($request->hasFile('imagen_producto')){
-                $imagen_producto = $request->file('imagen_producto');
-                $filename = 'img_'. $id . '.' . $imagen_producto->getClientOriginalExtension();
+         /*  MANEJO DE ARCHIVOS  */
+        if($request->hasFile('imagen_producto')){
+            $imagen_producto = $request->file('imagen_producto');
+            $filename = 'img_'. $id . '.' . $imagen_producto->getClientOriginalExtension();
 
-                $producto->imagen_producto = $filename;
-                Storage::put('/productos/'.$filename, file_get_contents($imagen_producto->getRealPath()));
-            } 
-            if($request->hasFile('tabla_nutricional')){
-                $tabla_nutricional = $request->file('tabla_nutricional'); 
-                $filename = 'tbl_' . $id . '.' . $tabla_nutricional->getClientOriginalExtension();
+            $producto->imagen_producto = $filename;
+            Storage::put('/productos/'.$filename, file_get_contents($imagen_producto->getRealPath()));
+        } 
+        if($request->hasFile('tabla_nutricional')){
+            $tabla_nutricional = $request->file('tabla_nutricional'); 
+            $filename = 'tbl_' . $id . '.' . $tabla_nutricional->getClientOriginalExtension();
 
-                $producto->tabla_nutricional = $filename;
-                Storage::put('/tablas/'.$filename, file_get_contents($tabla_nutricional->getRealPath()));
-            } 
-            $producto->save();            
+            $producto->tabla_nutricional = $filename;
+            Storage::put('/tablas/'.$filename, file_get_contents($tabla_nutricional->getRealPath()));
+        } 
+        $producto->save();            
 
     	//QUE HACER DESPUES DE ACCION?
     }
@@ -74,7 +73,6 @@ class ProductosController extends Controller
     * @param id del producto
     *
     */
-
     public function update(Request $request, $id){
         $producto = Productos::find($request->$id);
         $producto->update($request->all());
